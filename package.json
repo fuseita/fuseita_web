@@ -2,7 +2,7 @@
   "name": "atari_show",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://poyang31.github.io/atari_show/",
+  "homepage": "https://poyang31.github.io/atari_web/",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
