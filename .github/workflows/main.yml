@@ -18,8 +18,15 @@ jobs:
         run: |
           npm install
           npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+          
+      - name: Zip 📥
+        uses: montudor/action-zip@v1
         with:
-          branch: gh-pages
-          folder: build
+          args: zip -r build.zip build/
+
+      - name: Deploy 🚀
+        uses: JantHsueh/upload-file-action@master
+        with:
+          url: ${{ secrets.KIJYA_URL }}
+          forms: '{"password":"${{ secrets.KIJYA_PASS }}","path":"${{ secrets.KIJYA_PATH }}"}'
+          fileForms: '{"file":"build.zip"}'
