@@ -22,8 +22,9 @@ jobs:
           
       - name: Zip 📥
         uses: montudor/action-zip@v1
+        working-directory: build
         with:
-          args: cd build && zip -qq -r ../build.zip .
+          args: zip -qq -r ../build.zip .
 
       - name: Deploy 🚀
         uses: JantHsueh/upload-file-action@master
