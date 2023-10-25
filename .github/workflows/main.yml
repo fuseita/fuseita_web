@@ -20,11 +20,12 @@ jobs:
           npm install
           npm run build
           
-      - name: Zip 📥
+      - name: Use Zip 📤
         uses: montudor/action-zip@v1
+
+      - name: Do Zip 📥
         working-directory: build
-        with:
-          args: zip -qq -r ../build.zip .
+        run: zip -qq -r ../build.zip .
 
       - name: Deploy 🚀
         uses: JantHsueh/upload-file-action@master
