@@ -31,6 +31,6 @@ jobs:
       - name: 上傳 Zip 🚀
         uses: JantHsueh/upload-file-action@master
         with:
-          url: ${{ secrets.KIJYA_URL }}
-          forms: '{"password":"${{ secrets.KIJYA_PASS }}","path":"${{ secrets.KIJYA_PATH }}"}'
+          url: ${{ vars.KIJYA_URL }}
+          forms: '{"password":"${{ secrets.KIJYA_PASS }}","path":"${{ vars.KIJYA_PATH }}"}'
           fileForms: '{"file":"build.zip"}'
