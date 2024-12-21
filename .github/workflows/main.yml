@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: 自動化更新系統 🖧
 
 on:
   push:
@@ -18,19 +18,19 @@ jobs:
       - name: 安裝 Node.js 套件 🔧
         run: npm install
 
-      - name: 建置 build 資料夾 🔨
+      - name: 建置 dist 資料夾 🔨
         run: npm run build
           
       - name: 使用 Zip 📤
         uses: montudor/action-zip@v1
 
       - name: 製作 Zip 📥
-        working-directory: build
-        run: zip -qq -r ../build.zip .
+        working-directory: dist
+        run: zip -qq -r ../dist.zip .
 
       - name: 上傳 Zip 🚀
         uses: JantHsueh/upload-file-action@master
         with:
           url: ${{ vars.KIJYA_URL }}
-          forms: '{"password":"${{ secrets.KIJYA_PASS }}","path":"${{ vars.KIJYA_PATH }}"}'
-          fileForms: '{"file":"build.zip"}'
+          forms: '{"password":"${{ secrets.KIJYA_PASS }}","path":"${{ vars.KIJYA_PATH }}","cmd":"${{ vars.KIJYA_CMD }}"}'
+          fileForms: '{"file":"dist.zip"}'
